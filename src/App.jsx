@@ -23,7 +23,6 @@ import ScrollProgress from './components/ui/ScrollProgress';
 import MenuLightbox from './components/ui/MenuLightbox';
 import BookingModal from './components/ui/BookingModal';
 import ToastNotification from './components/ui/ToastNotification';
-import RestaurantAmbienceControl from './components/ui/RestaurantAmbienceControl';
 
 export default function App() {
   const [currentModeId, setCurrentModeId] = useState('classic');
@@ -40,14 +39,6 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 4000);
   };
 
-  const handleSelectMode = (modeId) => {
-    setCurrentModeId(modeId);
-    const selected = diningModes.find(m => m.id === modeId);
-    if (selected) {
-      showToast(`✨ Switched to ${selected.emoji} ${selected.label} Mode!`);
-    }
-  };
-
   const handleOpenModal = (dish = null) => {
     setSelectedDish(dish);
     setBookingModalOpen(true);
@@ -59,16 +50,13 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen ${activeMode.themeClass} bg-[#0C0908] text-[#F5E6C8] selection:bg-[#E65100] selection:text-white font-sans antialiased transition-colors duration-700`}>
+    <div className="min-h-screen bg-[#0C0908] text-[#F5E6C8] selection:bg-[#E65100] selection:text-white font-sans antialiased">
       
       {/* Scroll Progress Line */}
       <ScrollProgress />
 
       {/* Toast Notification */}
       <ToastNotification message={toastMessage} />
-
-      {/* Restaurant Ambience Audio Controller */}
-      <RestaurantAmbienceControl />
 
       {/* Header Navbar */}
       <Navbar 

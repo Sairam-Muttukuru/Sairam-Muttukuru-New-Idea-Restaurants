@@ -64,128 +64,76 @@ export default function HeroSection({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
-        {/* Experience Mode Quick Switcher Bar on Top of Hero */}
-        <motion.div 
-          variants={fromTop}
-          initial="hidden"
-          animate="visible"
-          custom={0.2}
-          className="mb-8 flex flex-col items-center lg:items-start gap-2.5"
-        >
-          <div className="text-[11px] font-extrabold tracking-widest uppercase text-[#A89B8C] flex items-center gap-2">
-            <span>✨ Select Your Dining Vibe:</span>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 p-1.5 bg-[#17120F]/90 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl">
-            {diningModes.map((mode) => {
-              const isSelected = mode.id === currentModeId;
-              return (
-                <button
-                  key={mode.id}
-                  onClick={() => onSelectMode(mode.id)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-black transition-all duration-300 flex items-center gap-2 cursor-pointer ${
-                    isSelected 
-                      ? 'bg-gradient-to-r text-white shadow-lg scale-105 border' 
-                      : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-transparent'
-                  }`}
-                  style={isSelected ? {
-                    backgroundImage: `linear-gradient(135deg, ${mode.accentColor}, #BF360C)`,
-                    borderColor: `${mode.accentColor}99`,
-                    boxShadow: `0 4px 15px ${mode.glowColor}`
-                  } : {}}
-                >
-                  <span className="text-base leading-none">{mode.emoji}</span>
-                  <span>{mode.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column Text Content */}
           <motion.div style={{ y: textY }} className="lg:col-span-7 space-y-7 text-center lg:text-left">
             
-            {/* Dynamic Badges */}
+            {/* Dhaba Trust Badges */}
             <motion.div 
-              key={activeMode.id + '-badges'}
               variants={fromTop}
               initial="hidden"
               animate="visible"
-              custom={0.4}
+              custom={0.2}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
             >
               <div className="badge-dhaba shadow-lg badge-mode">
                 <Flame className="w-4 h-4 fill-current animate-pulse text-[#FF5722]" />
-                <span>{activeMode.badge}</span>
+                <span>AUTHENTIC HIGHWAY DHABA</span>
               </div>
 
-              <div 
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black shadow-md border"
-                style={{
-                  backgroundColor: `${activeMode.accentColor}20`,
-                  borderColor: `${activeMode.accentColor}60`,
-                  color: '#FFFFFF'
-                }}
-              >
-                <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: activeMode.accentColor }} />
-                <span>{activeMode.statusBadge}</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black shadow-md border bg-[#FF8A65]/20 border-[#FF8A65]/60 text-white">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>OPEN DAILY 11:30 AM – 11:30 PM</span>
               </div>
             </motion.div>
 
-            {/* Dynamic Main Headline */}
-            <AnimatePresence mode="wait">
-              <motion.h1 
-                key={activeMode.id + '-headline'}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
-                className="font-serif-title font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12] text-white"
-              >
-                {activeMode.heroTitlePrefix} <br />
-                <span className="text-gradient-dhaba" style={{
-                  backgroundImage: `linear-gradient(135deg, #FFE0B2 0%, ${activeMode.accentColor} 50%, #FFB300 100%)`
-                }}>
-                  {activeMode.heroHighlight}
-                </span> <br />
-                {activeMode.heroTitleSuffix}
-              </motion.h1>
-            </AnimatePresence>
+            {/* Main Headline */}
+            <motion.h1 
+              variants={fromLeft}
+              initial="hidden"
+              animate="visible"
+              custom={0.4}
+              className="font-serif-title font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12] text-white"
+            >
+              Woodfire Handi & <br />
+              <span className="text-gradient-dhaba">
+                Clay-Oven Tandoori
+              </span> <br />
+              Feasts on NH16 Nellore
+            </motion.h1>
 
-            {/* Dynamic Subtext */}
-            <AnimatePresence mode="wait">
-              <motion.p 
-                key={activeMode.id + '-subtext'}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4 }}
-                className="text-[#A89B8C] text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed"
-              >
-                {activeMode.heroSubtext}
-              </motion.p>
-            </AnimatePresence>
+            {/* Subtext */}
+            <motion.p 
+              variants={fromLeft}
+              initial="hidden"
+              animate="visible"
+              custom={0.6}
+              className="text-[#A89B8C] text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed"
+            >
+              Experience the smoky perfection of slow-simmered handi curries, butter naans, sizzling tikkas, and spicy Andhra gravies crafted on open charcoal flames right beside NH16.
+            </motion.p>
 
-            {/* Dynamic Experience Perks */}
+            {/* Experience Perks Bar */}
             <motion.div 
-              key={activeMode.id + '-perks'}
               variants={fromBottom}
               initial="hidden"
               animate="visible"
-              custom={0.9}
+              custom={0.8}
               className="pt-1 flex flex-wrap justify-center lg:justify-start gap-3 text-xs font-bold text-gray-200"
             >
-              {activeMode.perks.map((perk, i) => (
-                <div 
-                  key={i} 
-                  className="flex items-center gap-2 bg-[#17120F] border border-white/10 px-4 py-2.5 rounded-xl hover:border-white/30 transition-colors shadow-md"
-                >
-                  {getPerkIcon(perk.icon)}
-                  <span>{perk.text}</span>
-                </div>
-              ))}
+              <div className="flex items-center gap-2 bg-[#17120F] border border-white/10 px-4 py-2.5 rounded-xl hover:border-white/30 transition-colors shadow-md">
+                <Car className="w-4 h-4 text-[#FFB300]" />
+                <span>NH16 Highway Parking</span>
+              </div>
+              <div className="flex items-center gap-2 bg-[#17120F] border border-white/10 px-4 py-2.5 rounded-xl hover:border-white/30 transition-colors shadow-md">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>100% Halal & Hygeinic</span>
+              </div>
+              <div className="flex items-center gap-2 bg-[#17120F] border border-white/10 px-4 py-2.5 rounded-xl hover:border-white/30 transition-colors shadow-md">
+                <Utensils className="w-4 h-4 text-[#FF8A65]" />
+                <span>AC Family Dining Hall</span>
+              </div>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -201,7 +149,7 @@ export default function HeroSection({
                 className="btn-mode-primary w-full sm:w-auto justify-center text-sm py-4 px-8 font-extrabold shadow-xl rounded-xl flex items-center gap-2 cursor-pointer"
               >
                 <Utensils className="w-4 h-4" />
-                Reserve For {activeMode.shortLabel}
+                <span>Reserve Table / Pre-Order</span>
               </button>
 
               <a 
