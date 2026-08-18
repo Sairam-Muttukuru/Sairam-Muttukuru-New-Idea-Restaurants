@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --dhaba-terracotta: #D84315;
+    --dhaba-clay-dark: #BF360C;
+    --dhaba-turmeric: #FFB300;
+    --dhaba-accent-orange: #FF8A65;
+    --dhaba-green: #2E7D32;
+    --dhaba-base: #0C0908;
+    --dhaba-surface: #17120F;
+    --dhaba-card: #211A15;
+    --dhaba-card-hover: #2B221B;
+    --dhaba-cream: #F5E6C8;
+    --dhaba-muted: #A89B8C;
+    
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: var(--font-serif) !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--dhaba-cream);
+    background-color: var(--dhaba-base);
+  }
+
+  body {
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-color: var(--dhaba-base);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0908;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D241E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dhaba-terracotta);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Authentic Dhaba Glass & Depth Panels */
+.glass-dhaba {
+  background: rgba(23, 18, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 179, 0, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+}
+
+.glass-dhaba-card {
+  background: linear-gradient(145deg, rgba(33, 26, 21, 0.9) 0%, rgba(23, 18, 15, 0.95) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(216, 67, 21, 0.25);
+  box-shadow: 
+    0 15px 35px -10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-dhaba-card:hover {
+  border-color: rgba(255, 179, 0, 0.45);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(216, 67, 21, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+}
+
+/* Authentic Dhaba Buttons */
+.btn-dhaba-primary {
+  background: linear-gradient(135deg, #E65100 0%, #D84315 50%, #BF360C 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  padding: 13px 26px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -5px rgba(216, 67, 21, 0.45);
+}
+
+.btn-dhaba-primary:hover {
+  background: linear-gradient(135deg, #FF5722 0%, #E65100 50%, #D84315 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(216, 67, 21, 0.65);
+}
+
+.btn-dhaba-gold {
+  background: linear-gradient(135deg, #FFB300 0%, #FFA000 100%);
+  color: #0C0908;
+  font-weight: 800;
+  padding: 13px 26px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 235, 170, 0.4);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -5px rgba(255, 179, 0, 0.35);
+}
+
+.btn-dhaba-gold:hover {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(255, 179, 0, 0.55);
+}
+
+.btn-dhaba-outline {
+  background: rgba(255, 179, 0, 0.06);
+  color: #FFB300;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 179, 0, 0.35);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+.btn-dhaba-outline:hover {
+  background: rgba(255, 179, 0, 0.16);
+  border-color: #FFB300;
+  color: #FFF8E7;
+  transform: translateY(-2px);
+}
+
+/* Authentic Badges */
+.badge-dhaba {
+  background: rgba(216, 67, 21, 0.15);
+  border: 1px solid rgba(255, 179, 0, 0.35);
+  color: #FF8A65;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Warm Text Gradients */
+.text-gradient-dhaba {
+  background: linear-gradient(135deg, #FFE0B2 0%, #FFB300 40%, #FF5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-clay {
+  background: linear-gradient(135deg, #FFCC80 0%, #D84315 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 9, 8, 0.9);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* 3D Pop-Out Image & Elevation System */
+.perspective-card-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.dish-3d-image-wrapper {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s ease;
+}
+
+/* Dynamic 3D Floor Shadow under floating platter */
+.shadow-3d-floor {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(216, 67, 21, 0.4) 40%, rgba(0,0,0,0) 75%);
+  filter: blur(12px);
+  opacity: 0;
+  transform: translateY(20px) scale(0.6);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .shadow-3d-floor {
+  opacity: 0.85;
+  transform: translateY(35px) scale(1.1);
+}
+
+/* Rising Hot Steam Animation */
+@keyframes steamRising {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleX(0.8) scaleY(0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-20px) scaleX(1.2) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-45px) scaleX(1.5) scaleY(1.3);
+  }
+}
+
+.animate-steam-1 {
+  animation: steamRising 2.8s infinite ease-out;
+}
+
+.animate-steam-2 {
+  animation: steamRising 3.2s infinite ease-out 0.9s;
+}
+
+.animate-steam-3 {
+  animation: steamRising 2.5s infinite ease-out 1.6s;
+}
+
+/* Equalizer Bars for Audio Player */
+@keyframes soundBar {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.animate-sound-bar-1 { animation: soundBar 0.8s infinite ease-in-out; }
+.animate-sound-bar-2 { animation: soundBar 0.6s infinite ease-in-out 0.2s; }
+.animate-sound-bar-3 { animation: soundBar 1.1s infinite ease-in-out 0.4s; }
+.animate-sound-bar-4 { animation: soundBar 0.7s infinite ease-in-out 0.1s; }
+
+/* Restaurant Ambient Pulsing Flame Glow */
+@keyframes flamePulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.06); }
+}
+
+.animate-flame-glow {
+  animation: flamePulse 4s infinite ease-in-out;
+}
+
