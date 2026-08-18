@@ -39,6 +39,10 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 4000);
   };
 
+  const handleSelectMode = (modeId) => {
+    setCurrentModeId(modeId);
+  };
+
   const handleOpenModal = (dish = null) => {
     setSelectedDish(dish);
     setBookingModalOpen(true);
@@ -50,7 +54,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0908] text-[#F5E6C8] selection:bg-[#E65100] selection:text-white font-sans antialiased">
+    <div className={`min-h-screen ${activeMode.themeClass} text-[#F5E6C8] selection:bg-[#E65100] selection:text-white font-sans antialiased transition-colors duration-700`}>
       
       {/* Scroll Progress Line */}
       <ScrollProgress />
@@ -58,9 +62,10 @@ export default function App() {
       {/* Toast Notification */}
       <ToastNotification message={toastMessage} />
 
-      {/* Header Navbar */}
+      {/* Header Navbar with Bottom Dining Vibe Selector */}
       <Navbar 
         currentModeId={currentModeId}
+        onSelectMode={handleSelectMode}
         onOpenModal={() => handleOpenModal(null)} 
         onOpenMenuLightbox={(idx) => handleOpenLightbox(idx)}
       />

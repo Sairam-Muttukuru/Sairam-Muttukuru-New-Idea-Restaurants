@@ -283,6 +283,7 @@
 
 /* Dining Experience Mode Themes */
 .theme-classic {
+  --theme-bg: #0C0908;
   --theme-accent: #E65100;
   --theme-accent-bright: #FF5722;
   --theme-secondary: #FFB300;
@@ -292,24 +293,27 @@
 }
 
 .theme-couple {
+  --theme-bg: #160A13;
   --theme-accent: #E11D48;
   --theme-accent-bright: #FB7185;
   --theme-secondary: #FDA4AF;
   --theme-glow: rgba(225, 29, 72, 0.45);
-  --theme-badge-bg: rgba(225, 29, 72, 0.18);
-  --theme-badge-border: rgba(251, 113, 133, 0.45);
+  --theme-badge-bg: rgba(225, 29, 72, 0.2);
+  --theme-badge-border: rgba(251, 113, 133, 0.5);
 }
 
 .theme-family {
-  --theme-accent: #D97706;
-  --theme-accent-bright: #F59E0B;
-  --theme-secondary: #10B981;
-  --theme-glow: rgba(245, 158, 11, 0.45);
-  --theme-badge-bg: rgba(245, 158, 11, 0.18);
-  --theme-badge-border: rgba(245, 158, 11, 0.45);
+  --theme-bg: #0A1510;
+  --theme-accent: #059669;
+  --theme-accent-bright: #10B981;
+  --theme-secondary: #FBBF24;
+  --theme-glow: rgba(16, 185, 129, 0.45);
+  --theme-badge-bg: rgba(16, 185, 129, 0.2);
+  --theme-badge-border: rgba(251, 191, 36, 0.5);
 }
 
 .theme-friends {
+  --theme-bg: #120B07;
   --theme-accent: #FF5722;
   --theme-accent-bright: #FF9800;
   --theme-secondary: #00E5FF;
@@ -319,12 +323,19 @@
 }
 
 .theme-gettogether {
+  --theme-bg: #13081A;
   --theme-accent: #9333EA;
   --theme-accent-bright: #C084FC;
   --theme-secondary: #FBBF24;
   --theme-glow: rgba(168, 85, 247, 0.45);
   --theme-badge-bg: rgba(147, 51, 234, 0.2);
   --theme-badge-border: rgba(192, 132, 252, 0.45);
+}
+
+/* Background transitions for pleasant theme environments */
+body, #root > div {
+  background-color: var(--theme-bg, #0C0908);
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Dynamic Active Mode Text Gradient */

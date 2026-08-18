@@ -48,7 +48,7 @@ export default function HeroSection({
   return (
     <section 
       ref={heroRef} 
-      className={`relative min-h-[94vh] pt-28 pb-20 md:py-36 overflow-hidden transition-colors duration-700 ${activeMode.themeClass} bg-[#0C0908] flex items-center border-b border-white/10`}
+      className={`relative min-h-[94vh] pt-32 pb-20 md:py-36 overflow-hidden transition-all duration-700 ${activeMode.themeClass} bg-transparent flex items-center border-b border-white/10`}
     >
       {/* Three.js 3D Background Canvas with Parallax */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 opacity-80">
