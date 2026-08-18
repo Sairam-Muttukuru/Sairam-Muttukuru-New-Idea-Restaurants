@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { diningModes } from './data/modeData';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
@@ -25,15 +26,26 @@ import ToastNotification from './components/ui/ToastNotification';
 import RestaurantAmbienceControl from './components/ui/RestaurantAmbienceControl';
 
 export default function App() {
+  const [currentModeId, setCurrentModeId] = useState('classic');
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedDish, setSelectedDish] = useState(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [toastMessage, setToastMessage] = useState(null);
 
+  const activeMode = diningModes.find(m => m.id === currentModeId) || diningModes[0];
+
   const showToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 4000);
+  };
+
+  const handleSelectMode = (modeId) => {
+    setCurrentModeId(modeId);
+    const selected = diningModes.find(m => m.id === modeId);
+    if (selected) {
+      showToast(`✨ Switched to ${selected.emoji} ${selected.label} Mode!`);
+    }
   };
 
   const handleOpenModal = (dish = null) => {
@@ -47,7 +59,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0908] text-[#F5E6C8] selection:bg-[#E65100] selection:text-white font-sans antialiased">
+    <div className={`min-h-screen ${activeMode.themeClass} bg-[#0C0908] text-[#F5E6C8] selection:bg-[#E65100] selection:text-white font-sans antialiased transition-colors duration-700`}>
       
       {/* Scroll Progress Line */}
       <ScrollProgress />
@@ -60,46 +72,53 @@ export default function App() {
 
       {/* Header Navbar */}
       <Navbar 
+        currentModeId={currentModeId}
         onOpenModal={() => handleOpenModal(null)} 
         onOpenMenuLightbox={(idx) => handleOpenLightbox(idx)}
       />
 
-      {/* Main Sections (Choreographed Directional Motion Journey) */}
+      {/* Main Sections */}
       <main>
-        {/* HERO: TOP->BOTTOM badge, BOTTOM->TOP headline, LEFT->RIGHT subtext, RIGHT->LEFT CTA, SCALE 0.85->1.0 food */}
+        {/* HERO: Dynamic Theme, Badges, Content & Curated Platter */}
         <HeroSection 
+          currentModeId={currentModeId}
+          onSelectMode={handleSelectMode}
           onOpenModal={() => handleOpenModal(null)}
           onOpenMenuLightbox={(idx) => handleOpenLightbox(idx)}
         />
         
-        {/* HIGHLIGHTS: 4-Way Staggered Cards (LEFT->RIGHT, BOTTOM->TOP, RIGHT->LEFT, TOP->BOTTOM) */}
-        <FamilyHighlights onOpenModal={() => handleOpenModal(null)} />
+        {/* EXPERIENCES & OCCASIONS: Couple, Family, Friends, Get-Together Hub */}
+        <FamilyHighlights 
+          currentModeId={currentModeId}
+          onSelectMode={handleSelectMode}
+          onOpenModal={() => handleOpenModal(null)} 
+        />
         
-        {/* SPOTLIGHT: Handi LEFT->CENTER, Details RIGHT->CENTER */}
+        {/* SPOTLIGHT: Handi Slow-Roasting */}
         <SpecialSpotlight onOpenModal={() => handleOpenModal(null)} />
         
-        {/* CINEMATIC BANNER: Parallax Feast Zoom (1.0 -> 1.08), TOP->BOTTOM title, RIGHT->LEFT CTA */}
+        {/* CINEMATIC BANNER: Parallax Feast Zoom */}
         <FullWidthCinematicBanner onOpenModal={() => handleOpenModal(null)} />
         
-        {/* ABOUT: Left image mask reveal LEFT->CENTER, Right text RIGHT->CENTER */}
+        {/* ABOUT: Woodfire Dhaba Heritage */}
         <AboutSection />
         
-        {/* MENU: Alternating item entrances & smooth category slide transitions */}
+        {/* MENU: Alternating item entrances & Category slide transitions */}
         <MenuSection 
           onSelectDish={(dish) => handleOpenModal(dish)} 
           onOpenMenuLightbox={(idx) => handleOpenLightbox(idx)}
         />
         
-        {/* WHY CHOOSE US: Staggered feature cards */}
+        {/* WHY CHOOSE US */}
         <WhyChooseUs />
         
-        {/* REVIEWS: Verified rating & alternating review card entrances */}
+        {/* REVIEWS */}
         <ReviewsSection />
         
-        {/* LOCATION: Address RIGHT->LEFT, Phone LEFT->RIGHT, Hours BOTTOM->TOP, Map TOP->BOTTOM */}
+        {/* LOCATION & HIGHWAY ACCESS */}
         <LocationSection onOpenModal={() => handleOpenModal(null)} />
         
-        {/* FINAL CTA: Closing Statement "COME HUNGRY. LEAVE HAPPY." */}
+        {/* FINAL CTA */}
         <FinalCTASection onOpenModal={() => handleOpenModal(null)} />
       </main>
 
@@ -124,6 +143,7 @@ export default function App() {
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
         selectedDish={selectedDish}
+        currentModeId={currentModeId}
         onSuccess={(msg) => showToast(msg)}
       />
 

@@ -281,3 +281,79 @@
   animation: flamePulse 4s infinite ease-in-out;
 }
 
+/* Dining Experience Mode Themes */
+.theme-classic {
+  --theme-accent: #E65100;
+  --theme-accent-bright: #FF5722;
+  --theme-secondary: #FFB300;
+  --theme-glow: rgba(230, 81, 0, 0.4);
+  --theme-badge-bg: rgba(230, 81, 0, 0.15);
+  --theme-badge-border: rgba(255, 179, 0, 0.4);
+}
+
+.theme-couple {
+  --theme-accent: #E11D48;
+  --theme-accent-bright: #FB7185;
+  --theme-secondary: #FDA4AF;
+  --theme-glow: rgba(225, 29, 72, 0.45);
+  --theme-badge-bg: rgba(225, 29, 72, 0.18);
+  --theme-badge-border: rgba(251, 113, 133, 0.45);
+}
+
+.theme-family {
+  --theme-accent: #D97706;
+  --theme-accent-bright: #F59E0B;
+  --theme-secondary: #10B981;
+  --theme-glow: rgba(245, 158, 11, 0.45);
+  --theme-badge-bg: rgba(245, 158, 11, 0.18);
+  --theme-badge-border: rgba(245, 158, 11, 0.45);
+}
+
+.theme-friends {
+  --theme-accent: #FF5722;
+  --theme-accent-bright: #FF9800;
+  --theme-secondary: #00E5FF;
+  --theme-glow: rgba(255, 87, 34, 0.45);
+  --theme-badge-bg: rgba(255, 87, 34, 0.2);
+  --theme-badge-border: rgba(255, 152, 0, 0.45);
+}
+
+.theme-gettogether {
+  --theme-accent: #9333EA;
+  --theme-accent-bright: #C084FC;
+  --theme-secondary: #FBBF24;
+  --theme-glow: rgba(168, 85, 247, 0.45);
+  --theme-badge-bg: rgba(147, 51, 234, 0.2);
+  --theme-badge-border: rgba(192, 132, 252, 0.45);
+}
+
+/* Dynamic Active Mode Text Gradient */
+.text-gradient-mode {
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--theme-secondary, #FFB300) 45%, var(--theme-accent-bright, #FF5722) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dynamic Active Mode Button */
+.btn-mode-primary {
+  background: linear-gradient(135deg, var(--theme-accent-bright, #FF5722) 0%, var(--theme-accent, #E65100) 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px -5px var(--theme-glow, rgba(230, 81, 0, 0.4));
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-mode-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px var(--theme-glow, rgba(230, 81, 0, 0.6));
+  filter: brightness(1.1);
+}
+
+.badge-mode {
+  background: var(--theme-badge-bg, rgba(230, 81, 0, 0.15));
+  border: 1px solid var(--theme-badge-border, rgba(255, 179, 0, 0.4));
+  color: var(--theme-secondary, #FFB300);
+}
+
+
