@@ -10,8 +10,8 @@ export default function FullWidthCinematicBanner({ onOpenModal }) {
     offset: ['start end', 'end start']
   });
 
-  // Slow Cinematic Scroll Zoom (1.0 -> 1.08)
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.08]);
+  // Subtle Parallax Fit (1.0 -> 1.02)
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.02]);
 
   return (
     <section 

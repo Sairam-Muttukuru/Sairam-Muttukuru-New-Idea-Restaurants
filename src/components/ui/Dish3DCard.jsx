@@ -16,58 +16,54 @@ export default function Dish3DCard({ item, onSelectDish }) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div>
-          {/* Food Image Container - Dedicated 3D Model Highlight Zone */}
-          <div className="relative h-56 w-full p-3 overflow-visible">
+          {/* Food Image Container - Properly Fitted without over-zoom */}
+          <div className="relative aspect-[4/3] w-full p-2.5 overflow-hidden">
             
-            {/* Smooth 3D Food Spotlight Ring */}
+            {/* Smooth Food Spotlight Ring */}
             <div 
-              className={`absolute inset-3 rounded-xl pointer-events-none transition-all duration-700 ease-out z-20 border ${
+              className={`absolute inset-2.5 rounded-xl pointer-events-none transition-all duration-500 ease-out z-20 border ${
                 isHovered 
-                  ? 'border-[#FFB300]/80 shadow-[0_0_30px_rgba(255,179,0,0.4)] scale-102 opacity-100' 
-                  : 'border-transparent opacity-0 scale-100'
+                  ? 'border-[#FFB300]/80 shadow-[0_0_25px_rgba(255,179,0,0.3)] opacity-100' 
+                  : 'border-transparent opacity-0'
               }`}
             />
 
-            {/* 3D Model-Like Food Image Box */}
+            {/* Food Image Box */}
             <div 
-              className={`w-full h-full rounded-xl overflow-hidden relative bg-gray-950 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 ${
+              className={`w-full h-full rounded-xl overflow-hidden relative bg-[#140F0C] transition-all duration-500 ease-out z-10 ${
                 isHovered 
-                  ? 'scale-[1.06] -translate-y-2 shadow-[0_25px_50px_-10px_rgba(230,81,0,0.6)] brightness-110' 
-                  : 'scale-100 translate-y-0 shadow-md brightness-100'
+                  ? 'shadow-[0_15px_30px_-8px_rgba(230,81,0,0.5)] -translate-y-0.5' 
+                  : 'shadow-md translate-y-0'
               }`}
-              style={{
-                transformStyle: 'preserve-3d',
-                perspective: '800px'
-              }}
             >
               <img 
                 src={item.image} 
                 alt={item.name} 
-                className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
-                  isHovered ? 'scale-110' : 'scale-100'
+                className={`w-full h-full object-cover object-center transition-transform duration-500 ease-out ${
+                  isHovered ? 'scale-[1.03]' : 'scale-100'
                 }`}
               />
               
               {/* Subtle Warm Vignette Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#17120F]/90 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#17120F]/85 via-transparent to-transparent pointer-events-none" />
 
               {/* 3D Sheen Highlight on Food Image */}
               <div 
-                className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
                   isHovered ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,235,170,0.25) 0%, transparent 50%, rgba(255,179,0,0.15) 100%)'
+                  background: 'linear-gradient(135deg, rgba(255,235,170,0.2) 0%, transparent 50%, rgba(255,179,0,0.1) 100%)'
                 }}
               />
 
               {/* 3D Model Highlight Badge */}
               <div 
-                className={`absolute top-2 right-2 bg-[#0C0908]/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#FFB300]/60 text-[9px] font-black text-[#FFB300] tracking-wider flex items-center gap-1 transition-all duration-700 ${
-                  isHovered ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-90'
+                className={`absolute top-2 right-2 bg-[#0C0908]/90 backdrop-blur-md px-2 py-0.5 rounded-full border border-[#FFB300]/60 text-[8.5px] font-black text-[#FFB300] tracking-wider flex items-center gap-1 transition-all duration-500 ${
+                  isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'
                 }`}
               >
-                <Sparkles className="w-2.5 h-2.5 text-[#FFB300]" /> 3D DISH VIEW
+                <Sparkles className="w-2.5 h-2.5 text-[#FFB300]" /> 3D VIEW
               </div>
             </div>
 

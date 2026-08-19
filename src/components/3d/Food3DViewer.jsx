@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { RotateCcw, Maximize2, Sparkles, Flame, Info, Check, Eye } from 'lucide-react';
+import { RotateCcw, Maximize2, Sparkles, Flame, Info, Check, Eye, X } from 'lucide-react';
 
 export default function Food3DViewer({
   dishType = 'handi_chicken', // 'handi_chicken', 'pepper_chicken', 'biryani', 'mutton_fry', 'paneer_tikka', 'roti'
@@ -278,7 +278,7 @@ export default function Food3DViewer({
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-48 bg-[#0C0908]/95 backdrop-blur-md border border-[#FFB300]/50 rounded-xl p-3 shadow-2xl z-40 text-left animate-in fade-in zoom-in-95 duration-200">
                 <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
                   <span className="text-xs font-black text-[#FFB300] uppercase tracking-wider">{hsInfo.label}</span>
-                  <button onClick={() => setActiveHotspot(null)} className="text-gray-400 hover:text-white text-[10px]">✕</button>
+                  <button onClick={() => setActiveHotspot(null)} className="text-gray-400 hover:text-white p-0.5 rounded hover:bg-white/10"><X className="w-3 h-3" /></button>
                 </div>
                 <p className="text-[11px] text-[#A89B8C] leading-tight font-medium">{hsInfo.detail}</p>
               </div>

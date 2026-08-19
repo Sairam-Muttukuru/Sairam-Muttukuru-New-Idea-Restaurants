@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MessageSquare, Flame, Sparkles, Check } from 'lucide-react';
+import { X, MessageSquare, Flame, Sparkles, Check, Utensils, Car, ShoppingBag } from 'lucide-react';
 import { diningModes } from '../../data/modeData';
 
 export default function BookingModal({ 
@@ -48,11 +48,11 @@ export default function BookingModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     const modeObj = diningModes.find(m => m.id === selectedExperience) || activeMode;
-    const msg = `*New Reservation / Order - Simhapuri Dhaba*\n- *Experience Mode:* ${modeObj.emoji} ${modeObj.label}\n- *Type:* ${orderType.toUpperCase()}\n- *Name:* ${customerName}\n- *Phone:* ${customerPhone}\n- *Guests/Portions:* ${guestCount}\n- *Details:* ${specialNote || (selectedDish ? selectedDish.name : modeObj.curatedPlatter.name)}`;
+    const msg = `*New Reservation / Order - Simhapuri Dhaba*\n- *Experience Mode:* ${modeObj.label}\n- *Type:* ${orderType.toUpperCase()}\n- *Name:* ${customerName}\n- *Phone:* ${customerPhone}\n- *Guests/Portions:* ${guestCount}\n- *Details:* ${specialNote || (selectedDish ? selectedDish.name : modeObj.curatedPlatter.name)}`;
     const whatsappUrl = `https://wa.me/917386823557?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
     onClose();
-    onSuccess(`🎉 Connecting directly to our restaurant manager for your ${modeObj.label}!`);
+    onSuccess(`Connecting directly to our restaurant manager for your ${modeObj.label}!`);
   };
 
   return (
@@ -105,8 +105,7 @@ export default function BookingModal({
                           : 'bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white'
                       }`}
                     >
-                      <div className="text-sm">{mode.emoji}</div>
-                      <div className="text-[10px] leading-tight truncate mt-0.5">{mode.shortLabel}</div>
+                      <div className="text-xs font-black text-[#FFB300]">{mode.shortLabel}</div>
                     </button>
                   );
                 })}
@@ -118,23 +117,23 @@ export default function BookingModal({
               <button
                 type="button"
                 onClick={() => setOrderType('dine-in')}
-                className={`py-2 rounded-lg transition-all ${orderType === 'dine-in' ? 'bg-[#E65100] text-white shadow-md' : 'hover:text-white'}`}
+                className={`py-2 rounded-lg transition-all flex items-center justify-center gap-1.5 ${orderType === 'dine-in' ? 'bg-[#E65100] text-white shadow-md' : 'hover:text-white'}`}
               >
-                🍽️ Dine-in
+                <Utensils className="w-3.5 h-3.5" /> Dine-in
               </button>
               <button
                 type="button"
                 onClick={() => setOrderType('takeaway')}
-                className={`py-2 rounded-lg transition-all ${orderType === 'takeaway' ? 'bg-[#E65100] text-white shadow-md' : 'hover:text-white'}`}
+                className={`py-2 rounded-lg transition-all flex items-center justify-center gap-1.5 ${orderType === 'takeaway' ? 'bg-[#E65100] text-white shadow-md' : 'hover:text-white'}`}
               >
-                🚗 Drive-Thru
+                <Car className="w-3.5 h-3.5" /> Drive-Thru
               </button>
               <button
                 type="button"
                 onClick={() => setOrderType('delivery')}
-                className={`py-2 rounded-lg transition-all ${orderType === 'delivery' ? 'bg-[#E65100] text-white shadow-md' : 'hover:text-white'}`}
+                className={`py-2 rounded-lg transition-all flex items-center justify-center gap-1.5 ${orderType === 'delivery' ? 'bg-[#E65100] text-white shadow-md' : 'hover:text-white'}`}
               >
-                🛵 Delivery
+                <ShoppingBag className="w-3.5 h-3.5" /> Delivery
               </button>
             </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, ArrowRight, Send, Navigation, Flame } from 'lucide-react';
+import { MapPin, Clock, Phone, ArrowRight, Send, Navigation, Flame, Car } from 'lucide-react';
 import { fromTop, fromBottom, fromLeft, fromRight } from '../../utils/motionVariants';
 
 export default function LocationSection({ onOpenModal }) {
@@ -127,12 +127,14 @@ export default function LocationSection({ onOpenModal }) {
 
               <div className="p-6 bg-[#0C0908] rounded-2xl border border-white/10 space-y-4">
                 <div className="flex items-center justify-between text-xs font-bold text-gray-300">
-                  <span>📍 South Raju Palem, Nellore</span>
+                  <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#FFB300]" /> South Raju Palem, Nellore</span>
                   <span className="text-emerald-400 font-bold">● Open Daily (11 AM - 11 PM)</span>
                 </div>
                 
                 <div className="text-center py-6 border-y border-white/10 space-y-2">
-                  <div className="text-3xl">🚗 🅿️</div>
+                  <div className="w-12 h-12 mx-auto rounded-2xl bg-[#E65100]/20 border border-[#FFB300]/40 flex items-center justify-center text-[#FFB300] shadow-lg">
+                    <Car className="w-6 h-6" />
+                  </div>
                   <div className="font-serif-title text-base font-extrabold text-white">Ample Open Parking Space On Site</div>
                   <div className="text-xs text-[#A89B8C] font-normal">Spacious parking right outside dining entrance</div>
                 </div>

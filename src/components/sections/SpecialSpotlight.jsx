@@ -44,22 +44,22 @@ export default function SpecialSpotlight({ onOpenModal }) {
                   }`}
                 />
 
-                {/* 3D Food Image Container */}
+                {/* Food Image Container - Properly Fitted without over-zoom */}
                 <div 
-                  className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-950 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                  className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#17120F] transition-all duration-500 ease-out ${
                     isHovered 
-                      ? 'scale-[1.05] -translate-y-2 shadow-[0_30px_60px_-12px_rgba(230,81,0,0.6)] brightness-110' 
-                      : 'scale-100 translate-y-0 shadow-xl brightness-100'
+                      ? 'shadow-[0_20px_40px_-10px_rgba(230,81,0,0.5)] -translate-y-1' 
+                      : 'shadow-xl translate-y-0'
                   }`}
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=900&auto=format&fit=crop&q=80" 
                     alt="Special Handi Country Chicken"
-                    className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
-                      isHovered ? 'scale-110' : 'scale-100'
+                    className={`w-full h-full object-cover object-center transition-transform duration-700 ease-out ${
+                      isHovered ? 'scale-[1.02]' : 'scale-100'
                     }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C0908]/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C0908]/85 via-transparent to-transparent pointer-events-none" />
 
                   {/* 3D Sheen Highlight */}
                   <div 

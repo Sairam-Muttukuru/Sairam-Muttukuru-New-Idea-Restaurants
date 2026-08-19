@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Users, Zap, Gift, Flame, Sparkles, CheckCircle2, ChevronRight, Utensils, ShieldCheck, Car, IceCream, Music } from 'lucide-react';
+import { Heart, Users, Zap, Gift, Flame, Sparkles, CheckCircle2, ChevronRight, Utensils, ShieldCheck, Car, IceCream, Music, Wine } from 'lucide-react';
 import { diningModes } from '../../data/modeData';
 import { fromTop, fromBottom, fromLeft, fromRight } from '../../utils/motionVariants';
 
@@ -39,6 +39,10 @@ export default function FamilyHighlights({ currentModeId, onSelectMode, onOpenMo
           <div className="pt-4 flex flex-wrap items-center justify-center gap-2">
             {diningModes.map((mode) => {
               const isSelected = mode.id === currentModeId;
+              const IconComp = mode.iconName === 'Heart' ? Heart :
+                               mode.iconName === 'Users' ? Users :
+                               mode.iconName === 'Wine' ? Wine :
+                               mode.iconName === 'Sparkles' ? Sparkles : Flame;
               return (
                 <button
                   key={mode.id}
@@ -53,7 +57,7 @@ export default function FamilyHighlights({ currentModeId, onSelectMode, onOpenMo
                     boxShadow: `0 0 20px ${mode.glowColor}`
                   } : {}}
                 >
-                  <span className="text-base">{mode.emoji}</span>
+                  <IconComp className="w-4 h-4 text-[#FFB300]" />
                   <span>{mode.label}</span>
                 </button>
               );
@@ -120,7 +124,7 @@ export default function FamilyHighlights({ currentModeId, onSelectMode, onOpenMo
                   <img 
                     src={activeMode.curatedPlatter.image} 
                     alt={activeMode.curatedPlatter.name}
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-white/10 shadow-lg shrink-0"
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover object-center border border-white/10 shadow-lg shrink-0"
                   />
                   <div>
                     <h4 className="font-serif-title font-extrabold text-lg sm:text-xl text-white">
@@ -141,8 +145,9 @@ export default function FamilyHighlights({ currentModeId, onSelectMode, onOpenMo
               </div>
 
               <div className="pt-6 mt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 relative z-10">
-                <div className="text-xs text-gray-300 font-medium text-center sm:text-left">
-                  <span>⚡ Instant Table + Platter Hold</span>
+                <div className="text-xs text-gray-300 font-medium text-center sm:text-left flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Instant Table + Platter Hold</span>
                 </div>
                 <button
                   onClick={() => onOpenModal()}
@@ -160,6 +165,10 @@ export default function FamilyHighlights({ currentModeId, onSelectMode, onOpenMo
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {diningModes.filter(m => m.id !== 'classic').map((mode) => {
             const isCurrent = mode.id === currentModeId;
+            const IconComp = mode.iconName === 'Heart' ? Heart :
+                             mode.iconName === 'Users' ? Users :
+                             mode.iconName === 'Wine' ? Wine :
+                             mode.iconName === 'Sparkles' ? Sparkles : Flame;
             return (
               <div 
                 key={mode.id}
@@ -171,7 +180,9 @@ export default function FamilyHighlights({ currentModeId, onSelectMode, onOpenMo
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-2xl">{mode.emoji}</span>
+                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#FFB300]">
+                    <IconComp className="w-4 h-4" />
+                  </div>
                   <span className="text-[10px] font-black uppercase text-[#FFB300] tracking-wider">
                     {mode.shortLabel}
                   </span>

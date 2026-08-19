@@ -7,9 +7,9 @@ export default function AboutSection() {
   const [activeStoryTab, setActiveStoryTab] = useState('recipe');
 
   const storyTabs = [
-    { id: 'recipe', label: 'Hand-Ground Spices 🌿' },
-    { id: 'freshness', label: 'Fresh Daily Sourcing 🐓' },
-    { id: 'ambiance', label: 'Spacious Ambiance 🚗' }
+    { id: 'recipe', label: 'Hand-Ground Spices' },
+    { id: 'freshness', label: 'Fresh Daily Sourcing' },
+    { id: 'ambiance', label: 'Spacious Ambiance' }
   ];
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Flame, Music, Sparkles, SlidersHorizontal, Radio } from 'lucide-react';
+import { Volume2, VolumeX, Flame, Music, Sparkles, SlidersHorizontal, Radio, X } from 'lucide-react';
 
 export default function RestaurantAmbienceControl({ externalPlayState, onToggleExternal }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -123,9 +123,9 @@ export default function RestaurantAmbienceControl({ externalPlayState, onToggleE
             </div>
             <button 
               onClick={() => setExpanded(false)}
-              className="text-gray-400 hover:text-white text-xs font-bold"
+              className="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors"
             >
-              ✕
+              <X className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -137,33 +137,33 @@ export default function RestaurantAmbienceControl({ externalPlayState, onToggleE
           <div className="grid grid-cols-3 gap-1.5 pt-1">
             <button
               onClick={() => setSoundscape('tandoor')}
-              className={`py-1.5 px-2 rounded-lg text-[10px] font-bold border transition-all ${
+              className={`py-1.5 px-2 rounded-lg text-[10px] font-bold border transition-all flex items-center justify-center gap-1 ${
                 soundscape === 'tandoor'
                   ? 'bg-[#E65100]/30 border-[#FFB300] text-[#FFB300]'
                   : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
             >
-              🔥 Tandoor
+              <Flame className="w-3 h-3" /> Tandoor
             </button>
             <button
               onClick={() => setSoundscape('hearth')}
-              className={`py-1.5 px-2 rounded-lg text-[10px] font-bold border transition-all ${
+              className={`py-1.5 px-2 rounded-lg text-[10px] font-bold border transition-all flex items-center justify-center gap-1 ${
                 soundscape === 'hearth'
                   ? 'bg-[#E65100]/30 border-[#FFB300] text-[#FFB300]'
                   : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
             >
-              🥘 Kitchen
+              <Utensils className="w-3 h-3" /> Kitchen
             </button>
             <button
               onClick={() => setSoundscape('acoustic')}
-              className={`py-1.5 px-2 rounded-lg text-[10px] font-bold border transition-all ${
+              className={`py-1.5 px-2 rounded-lg text-[10px] font-bold border transition-all flex items-center justify-center gap-1 ${
                 soundscape === 'acoustic'
                   ? 'bg-[#E65100]/30 border-[#FFB300] text-[#FFB300]'
                   : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
             >
-              🎵 Dining
+              <Music className="w-3 h-3" /> Dining
             </button>
           </div>
 
